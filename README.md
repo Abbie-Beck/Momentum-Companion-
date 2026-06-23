@@ -1,36 +1,54 @@
-# React + TypeScript + Vite + Tailwind
+# Momentum
 
-This template provides a minimal setup to get React working in Vite, TypeScript, and Tailwind.
+A productivity app designed to help users build momentum by focusing on one small task at a time.
 
-## Getting Started 🚀
+## Features
 
-1. Clone the repo.
-2. Install dependencies: `pnpm install`
-3. Start the dev server: `pnpm dev`
+- Add tasks
+- Mark tasks as complete
+- Track progress
+- Encouraging momentum-focused workflow
 
-### Or
+## Tech Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmoinulmoin%2Fvite-react-tailwind-starter)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Install dependencies
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+pnpm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Start the development server
 
-## License 📄
+```bash
+pnpm dev
+```
 
-[MIT License](https://github.com/moinulmoin/vite-react-tailwind-starter/blob/master/LICENSE)
+### Build for production
+
+```bash
+pnpm build
+```
+
+## Future Features
+
+- Task categories
+- Streak tracking
+- Progress statistics
+- ADHD-friendly reminders
+
+## License
+
+MIT
+
+## Acknowledgments
+
+This project was initially created using a React + TypeScript + Vite + Tailwind template by `moinulomoin`.
+
+* Original template: https://github.com/moinulmoin/vite-react-tailwind-starter
