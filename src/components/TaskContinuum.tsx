@@ -1,4 +1,4 @@
-import { Button } from "src/components/ui/Button.tsx";
+import { Button } from "@/components/ui/button";
 
 type Task = {
   text: string;
@@ -66,7 +66,11 @@ export default function TaskContinuum({
                   height: isCurrent ? "220px" : "180px",
                   borderRadius: "16px",
                   padding: "1rem",
-                  background: isCurrent ? "#ffffff" : "#f8fafc",
+                  background: "rgba(255, 255, 255, 0.75)",
+                  backdropFilter: "blur(10px)",
+                  borderRadius: "16px",
+                  border: "1px solid rgba(226, 232, 240, 0.6)",
+                  boxShadow: "0 10px 30px rgba(30, 58, 138, 0.08)",
                   border: isCurrent
                     ? `2px solid ${accent}`
                     : "1px solid #e2e8f0",

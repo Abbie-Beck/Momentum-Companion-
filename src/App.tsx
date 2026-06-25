@@ -33,91 +33,103 @@ export default function App() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #f5f9ff, #ffffff)",
+         background: `
+  linear-gradient(180deg, #e0e7ff 0%, #ede9fe 45%, #ffffff 100%)
+`,
         fontFamily: "system-ui, -apple-system, sans-serif",
         display: "flex",
-        flexDirection: "column",
+        justifyContent: "flex-start",
         alignItems: "center",
+        flexDirection: "column",
         paddingTop: "2.5rem",
         color: "#0f172a",
       }}
     >
-      {/* HEADER */}
-      <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-        <h1
-          style={{
-            margin: 0,
-            fontSize: "2.2rem",
-            color: "#1e3a8a",
-            letterSpacing: "0.5px",
-          }}
-        >
-          Momentum
-        </h1>
-
-        <p
-          style={{
-            margin: "0.5rem 0 0",
-            color: "#64748b",
-            fontSize: "0.95rem",
-          }}
-        >
-          One step. Right now.
-        </p>
-      </div>
-
-      {/* INPUT CARD */}
+      {/* CONTENT WRAPPER */}
       <div
         style={{
+          width: "100%",
+          maxWidth: "900px",
           display: "flex",
-          gap: "0.5rem",
-          marginBottom: "1.8rem",
-          background: "#ffffff",
-          padding: "0.75rem",
-          borderRadius: "14px",
-          border: "1px solid #e2e8f0",
-          boxShadow: "0 10px 25px rgba(30, 58, 138, 0.08)",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Add a task..."
-          style={{
-            border: "none",
-            outline: "none",
-            fontSize: "1rem",
-            width: "240px",
-            color: "#0f172a",
-          }}
-        />
+        {/* HEADER */}
+        <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+          <h1
+            style={{
+              margin: 0,
+              fontSize: "2.2rem",
+              color: "#1e3a8a",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Momentum
+          </h1>
 
-        <button
-          onClick={addTask}
+          <p
+            style={{
+              margin: "0.5rem 0 0",
+              color: "#64748b",
+              fontSize: "0.95rem",
+            }}
+          >
+            One step. Right now.
+          </p>
+        </div>
+
+        {/* INPUT CARD */}
+        <div
           style={{
-            background: "#2563EB",
-            color: "white",
-            border: "none",
-            padding: "0.55rem 1rem",
-            borderRadius: "10px",
-            cursor: "pointer",
-            fontWeight: 600,
-            boxShadow: "0 8px 18px rgba(37,99,235,0.25)",
-            transition: "transform 0.1s ease",
+            display: "flex",
+            gap: "0.5rem",
+            marginBottom: "1.8rem",
+            background: "#ffffff",
+            padding: "0.75rem",
+            borderRadius: "14px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 10px 25px rgba(30, 58, 138, 0.08)",
           }}
-          onMouseDown={(e) =>
-            (e.currentTarget.style.transform = "scale(0.97)")
-          }
-          onMouseUp={(e) =>
-            (e.currentTarget.style.transform = "scale(1)")
-          }
         >
-          Add
-        </button>
-      </div>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Add a task..."
+            style={{
+              border: "none",
+              outline: "none",
+              fontSize: "1rem",
+              width: "240px",
+              color: "#0f172a",
+            }}
+          />
 
-      {/* CONTINUUM WRAPPER */}
-      <div style={{ width: "100%", maxWidth: "900px" }}>
+          <button
+            onClick={addTask}
+            style={{
+              background: "#2563EB",
+              color: "white",
+              border: "none",
+              padding: "0.55rem 1rem",
+              borderRadius: "10px",
+              cursor: "pointer",
+              fontWeight: 600,
+              boxShadow: "0 8px 18px rgba(37,99,235,0.25)",
+              transition: "transform 0.1s ease",
+            }}
+            onMouseDown={(e) =>
+              (e.currentTarget.style.transform = "scale(0.97)")
+            }
+            onMouseUp={(e) =>
+              (e.currentTarget.style.transform = "scale(1)")
+            }
+          >
+            Add
+          </button>
+        </div>
+
+        {/* CONTINUUM */}
         <TaskContinuum
           tasks={tasks}
           momentumIndex={momentumIndex}
