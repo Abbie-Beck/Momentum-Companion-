@@ -24,6 +24,21 @@ export default function TaskContinuum({
     "#8B5CF6",
   ];
 
+  if (momentumIndex === -1) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          padding: "3rem",
+          fontSize: "1.25rem",
+          color: "#0f172a",
+        }}
+      >
+        🎉 All tasks completed!
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -35,42 +50,48 @@ export default function TaskContinuum({
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "stretch",
-          gap: "12px",
+          position: "relative",
           height: "320px",
+          overflow: "hidden",
         }}
       >
         {tasks.map((task, index) => {
           const distance = index - momentumIndex;
 
-          if (distance < -2 || distance > 2) return null;
+          if (Math.abs(distance) > 2) return null;
 
           const isCurrent = distance === 0;
           const accent = colors[index % colors.length];
+
+          const scale =
+            distance === 0 
+            ? 1 
+            : Math.abs(distance) === 1 
+            ? 0.9 
+            : 0.8;
+
+          const xOffset = distance * 180;
 
           return (
             <div
               key={index}
               style={{
-                flex: "0 0 160px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                transition: "all 0.35s ease",
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                width: "160px",
+                transform: `translate(calc(-50% + ${xOffset}px), -50%) scale(${scale})`,
+                transition: "all 0.4s ease",
+                zIndex: isCurrent ? 10 : 5,
               }}
             >
               <div
                 style={{
                   height: isCurrent ? "220px" : "180px",
-                  borderRadius: "16px",
                   padding: "1rem",
-                  background: "rgba(255, 255, 255, 0.75)",
-                  backdropFilter: "blur(10px)",
                   borderRadius: "16px",
-                  border: "1px solid rgba(226, 232, 240, 0.6)",
-                  boxShadow: "0 10px 30px rgba(30, 58, 138, 0.08)",
+                  background: "rgba(255,255,255,0.75)",
+                  backdropFilter: "blur(10px)",
                   border: isCurrent
                     ? `2px solid ${accent}`
                     : "1px solid #e2e8f0",
@@ -79,35 +100,28 @@ export default function TaskContinuum({
                     : "0 4px 10px rgba(0,0,0,0.04)",
                   opacity: isCurrent
                     ? 1
-                    : distance === 1 || distance === -1
-                      ? 0.7
-                      : 0.5,
-                  transform: isCurrent
-                    ? "translateY(-6px)"
-                    : "scale(0.95)",
+                    : Math.abs(distance) === 1
+                    ? 0.7
+                    : 0.45,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                 }}
               >
-                <div>
-                  <div
-                    style={{
-                      fontWeight: isCurrent ? 600 : 400,
-                      color: "#0f172a",
-                      fontSize: "0.95rem",
-                    }}
-                  >
-                    {task.text} {task.done ? "✓" : ""}
-                  </div>
+                <div
+                  style={{
+                    fontWeight: isCurrent ? 600 : 400,
+                    color: task.done ? "#94a3b8" : "#0f172a",
+                    textDecoration: task.done ? "line-through" : "none",
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  {task.text}
                 </div>
 
                 {isCurrent && !task.done && (
-                  <Button
-                    onClick={onComplete}
-                    size="sm"
-                  >
-                    Done
+                  <Button onClick={onComplete} size="sm">
+                    Accomplished →
                   </Button>
                 )}
               </div>
